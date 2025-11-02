@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conejeros Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #001F3F, #000814);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      text-align: center;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #007BFF, #00BFFF);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #00BFFF, #007BFF);
+      transform: scale(1.05);
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00bfff; }
+      to { text-shadow: 0 0 25px #00ffff; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Impulsamos el futuro de tu empresa</h1>
+  <p>Unimos análisis, automatización y resultados medibles.</p>
+  <button onclick="window.location.href='https://tu-cuestionario.com'">Ir al cuestionario</button>
+</body>
+</html>
+
 
