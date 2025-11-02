@@ -1,167 +1,105 @@
-<section class="hero">
-  <div class="hero-overlay"></div>
-
-  <header class="navbar">
-    <div class="logo">⚙️ Conejeros Solutions</div>
-    <nav>
-      <a href="#benefits">Beneficios</a>
-      <a href="#services">Servicios</a>
-      <a href="#process">Proceso</a>
-    </nav>
-    <button class="cta">Agenda tu diagnóstico</button>
-  </header>
-
-  <div class="hero-content">
-    <p class="subtitle">Consultoría en Automatización Inteligente</p>
-    <h1><span>Automatiza Hoy.</span> <em>Lidera Mañana.</em></h1>
-    <p class="description">Transformamos operaciones complejas en flujos simples, con soluciones de IA que trabajan por ti.</p>
-    <button class="primary-btn" onclick="window.location.href='https://tu-cuestionario.com'">Solicita nuestros servicios</button>
-  </div>
-</section>
-
-<style>
-/* --- HERO --- */
-.hero {
+.hero-v2 {
+  position: relative;
   height: 100vh;
-  color: #fff;
-  background: radial-gradient(circle at top right, #001b3a, #000814 70%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background: linear-gradient(160deg, #000d1a, #001a33);
+  color: #fff;
   overflow: hidden;
 }
 
-/* Fondo con efecto luz en movimiento */
-.hero::before {
-  content: "";
+/* Animación de luces dinámicas */
+.hero-v2-lights::before,
+.hero-v2-lights::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(0,150,255,0.25), transparent 60%),
-              radial-gradient(circle at 70% 60%, rgba(0,100,255,0.25), transparent 60%);
-  animation: moveGlow 10s ease-in-out infinite alternate;
-  z-index: 0;
+  border-radius: 50%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0,150,255,0.2), transparent 70%);
+  animation: pulse 10s infinite ease-in-out;
 }
-@keyframes moveGlow {
-  from { transform: scale(1); opacity: 0.8; }
-  to { transform: scale(1.3); opacity: 1; }
+.hero-v2-lights::before {
+  top: -200px;
+  left: -200px;
+}
+.hero-v2-lights::after {
+  bottom: -200px;
+  right: -200px;
 }
 
-/* Overlay oscuro */
-.hero-overlay {
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+.hero-v2-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
   z-index: 1;
-  backdrop-filter: blur(10px);
 }
 
-/* Navbar */
-.navbar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 70px;
-  z-index: 10;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.logo {
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
-  color: #00bfff;
-}
-
-.navbar nav a {
-  margin: 0 20px;
-  color: #ddd;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: 0.3s ease;
-}
-.navbar nav a:hover {
-  color: #00bfff;
-}
-
-.navbar .cta {
-  padding: 10px 22px;
-  background: linear-gradient(90deg, #007bff, #00bfff);
-  border: none;
-  border-radius: 30px;
-  color: white;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-.navbar .cta:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0,191,255,0.4);
-}
-
-/* Contenido hero */
-.hero-content {
+/* Contenido */
+.hero-v2-content {
   position: relative;
   z-index: 2;
   text-align: center;
   max-width: 800px;
   padding: 0 25px;
-  margin-top: 60px;
-  animation: fadeIn 2s ease forwards;
+  animation: fadeInUp 1.5s ease-in-out forwards;
 }
 
-.hero .subtitle {
-  font-size: 0.95rem;
+.hero-v2-content .subtitle {
+  font-size: 0.9rem;
   color: #00bfff;
-  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
-.hero h1 {
+.hero-v2-content h1 {
   font-size: 3.5rem;
-  font-weight: 600;
   margin-bottom: 20px;
+  font-weight: 700;
   line-height: 1.2;
 }
-.hero h1 span {
-  color: #ffffff;
+.hero-v2-content h1 span {
+  color: white;
 }
-.hero h1 em {
-  color: #00bfff;
+.hero-v2-content h1 em {
   font-style: italic;
+  color: #33cfff;
 }
 
-.hero .description {
+.hero-v2-content .description {
   font-size: 1.1rem;
   opacity: 0.85;
   margin-bottom: 40px;
 }
 
-.primary-btn {
-  background: linear-gradient(90deg, #007BFF, #00BFFF);
+/* Botón con efecto 3D */
+.primary-btn-v2 {
+  background: linear-gradient(145deg, #00bfff, #007acc);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.4);
   padding: 14px 36px;
   font-size: 1rem;
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(0,191,255,0.3);
-  transition: 0.4s ease;
+  color: white;
+  transition: all 0.3s ease-in-out;
 }
-.primary-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(0,191,255,0.5);
+.primary-btn-v2:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 191, 255, 0.6);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
-</style>
