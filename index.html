@@ -1,86 +1,163 @@
 <section class="hero">
-  <div class="overlay"></div>
+  <div class="hero-overlay"></div>
+
+  <header class="navbar">
+    <div class="logo">⚙️ Conejeros Solutions</div>
+    <nav>
+      <a href="#benefits">Beneficios</a>
+      <a href="#services">Servicios</a>
+      <a href="#process">Proceso</a>
+    </nav>
+    <button class="cta">Agenda tu diagnóstico</button>
+  </header>
+
   <div class="hero-content">
-    <h1>Impulsamos el futuro de tu empresa</h1>
-    <p>Automatización, inteligencia y eficiencia en un solo lugar.</p>
-    <button onclick="window.location.href='https://tu-cuestionario.com'">Agendar diagnóstico gratuito</button>
+    <p class="subtitle">Consultoría en Automatización Inteligente</p>
+    <h1><span>Automatiza Hoy.</span> <em>Lidera Mañana.</em></h1>
+    <p class="description">Transformamos operaciones complejas en flujos simples, con soluciones de IA que trabajan por ti.</p>
+    <button class="primary-btn" onclick="window.location.href='https://tu-cuestionario.com'">Solicita nuestros servicios</button>
   </div>
 </section>
 
 <style>
+/* --- HERO --- */
 .hero {
   height: 100vh;
+  color: #fff;
+  background: radial-gradient(circle at top right, #001b3a, #000814 70%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 30% 20%, #003366, #000814 80%);
 }
 
-/* fondo animado */
+/* Fondo con efecto luz en movimiento */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 20%, #00bfff22, transparent 60%),
-              radial-gradient(circle at 80% 60%, #007bff22, transparent 60%);
-  animation: moveBg 10s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 30% 50%, rgba(0,150,255,0.25), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(0,100,255,0.25), transparent 60%);
+  animation: moveGlow 10s ease-in-out infinite alternate;
+  z-index: 0;
 }
-@keyframes moveBg {
-  from { transform: scale(1); }
-  to { transform: scale(1.2); }
+@keyframes moveGlow {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.3); opacity: 1; }
 }
 
-/* capa sutil de blur */
-.overlay {
+/* Overlay oscuro */
+.hero-overlay {
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(30px);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
-/* contenido */
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 70px;
+  z-index: 10;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: #00bfff;
+}
+
+.navbar nav a {
+  margin: 0 20px;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+.navbar nav a:hover {
+  color: #00bfff;
+}
+
+.navbar .cta {
+  padding: 10px 22px;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.navbar .cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,191,255,0.4);
+}
+
+/* Contenido hero */
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 700px;
-  padding: 0 20px;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 25px;
+  margin-top: 60px;
+  animation: fadeIn 2s ease forwards;
+}
+
+.hero .subtitle {
+  font-size: 0.95rem;
+  color: #00bfff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .hero h1 {
   font-size: 3.5rem;
   font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.hero h1 span {
   color: #ffffff;
-  letter-spacing: -0.5px;
-  animation: fadeIn 2s ease forwards;
-  text-shadow: 0 0 30px rgba(0,191,255,0.2);
+}
+.hero h1 em {
+  color: #00bfff;
+  font-style: italic;
 }
 
-.hero p {
-  font-size: 1.3rem;
+.hero .description {
+  font-size: 1.1rem;
   opacity: 0.85;
-  margin: 20px 0 35px;
-  animation: fadeIn 3s ease forwards;
+  margin-bottom: 40px;
 }
 
-.hero button {
-  padding: 14px 36px;
-  font-size: 1.05rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  color: white;
+.primary-btn {
   background: linear-gradient(90deg, #007BFF, #00BFFF);
-  transition: all 0.4s ease;
-  box-shadow: 0 0 15px rgba(0,191,255,0.25);
+  padding: 14px 36px;
+  font-size: 1rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,191,255,0.3);
+  transition: 0.4s ease;
 }
-
-.hero button:hover {
-  background: linear-gradient(90deg, #00BFFF, #007BFF);
-  transform: scale(1.07);
-  box-shadow: 0 0 25px rgba(0,191,255,0.4);
+.primary-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(0,191,255,0.5);
 }
 
 @keyframes fadeIn {
@@ -88,5 +165,3 @@
   to { opacity: 1; transform: translateY(0); }
 }
 </style>
-
-
