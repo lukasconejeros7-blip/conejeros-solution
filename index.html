@@ -192,83 +192,6 @@ footer{padding:22px 20px;color:var(--muted);text-align:center;border-top:1px sol
   </div>
 </header>
 
-<!-- BENEFICIOS -->
-<section id="beneficios" class="section">
-  <div class="narrow center">
-    <h2 class="h2">Optimiza, acelera y automatiza</h2>
-    <p class="lead">Reduce costes operativos y elimina tareas repetitivas con soluciones que elevan la eficiencia y la precisión.</p>
-  </div>
-  <div class="max grid cols-3 reveal">
-    <article class="card red">
-      <h3>Reducción de trabajo manual</h3>
-      <p>Bots y flujos que se encargan del “copy-paste” diario. Tu equipo se enfoca en lo que mueve la aguja.</p>
-    </article>
-    <article class="card red">
-      <h3>Mayor velocidad operativa</h3>
-      <p>Respuestas y procesos en segundos. Menos cuellos de botella, más entregas a tiempo.</p>
-    </article>
-    <article class="card red">
-      <h3>Menos errores humanos</h3>
-      <p>Procesos estandarizados y auditables. Calidad consistente y menos retrabajo.</p>
-    </article>
-  </div>
-</section>
-
-<!-- SOLUCIONES -->
-<section id="soluciones" class="section" style="background:var(--bg-2);">
-  <div class="narrow center">
-    <h2 class="h2">Soluciones que producen resultados</h2>
-    <p class="lead">De la captación a lo documental: todo orquestado por IA con integración a tus herramientas.</p>
-  </div>
-  <div class="max grid cols-3 reveal">
-    <article class="card">
-      <h3>Captación y calificación de leads</h3>
-      <p>Captura, califica y agenda en automático. Seguimiento 24/7 por WhatsApp/IG conectado a tu CRM.</p>
-    </article>
-    <article class="card">
-      <h3>Asistentes de conocimiento (RAG)</h3>
-      <p>Respuestas precisas desde tus documentos. SOPs, FAQs y soporte interno sin alucinaciones.</p>
-    </article>
-    <article class="card">
-      <h3>Flujos documentales</h3>
-      <p>Cotizaciones, órdenes, contratos y facturas. Extracción, validación y envío completamente automatizados.</p>
-    </article>
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section id="proceso" class="section">
-  <div class="narrow center">
-    <h2 class="h2">Un método claro para implementar sin fricción</h2>
-    <p class="lead">Diagnóstico, entrega y mejora continua. Sin lock-in: eres dueño de tus datos y flujos.</p>
-  </div>
-  <div class="max grid cols-3 reveal">
-    <article class="card">
-      <div class="step"><span class="dot"></span><div>
-        <h3>Estudio</h3>
-        <p>Mapeamos oportunidades y ROI esperado. Priorizamos impacto real.</p>
-      </div></div>
-    </article>
-    <article class="card">
-      <div class="step"><span class="dot"></span><div>
-        <h3>Implementación</h3>
-        <p>Integraciones, pruebas y seguridad por defecto. Entregas escalables.</p>
-      </div></div>
-    </article>
-    <article class="card">
-      <div class="step"><span class="dot"></span><div>
-        <h3>Optimización</h3>
-        <p>Métricas, A/B y mejoras continuas según datos operativos.</p>
-      </div></div>
-    </article>
-  </div>
-
-  <div class="sp-20"></div>
-  <div class="narrow center reveal">
-    <p class="lead">Integraciones: n8n · Airtable · WhatsApp API · Sheets · Gmail · Meta. 100% portables.</p>
-  </div>
-</section>
-
 <!-- CONTACTO -->
 <section id="contacto" class="section" style="background:
  radial-gradient(60% 60% at 50% 0%, rgba(0,191,255,.18), transparent 60%),
@@ -279,7 +202,7 @@ footer{padding:22px 20px;color:var(--muted);text-align:center;border-top:1px sol
     <p class="lead">Cuéntanos tu caso. Te proponemos un plan claro, con tiempos y resultados esperados.</p>
   </div>
 
-  <form class="form-wrap reveal" onsubmit="event.preventDefault();alert('¡Gracias! Te contactamos en 24h.');">
+  <form class="form-wrap reveal" onsubmit="event.preventDefault(); sendFormData(this);">
     <input class="input" type="text" name="nombre" placeholder="Tu nombre" required>
     <input class="input" type="text" name="empresa" placeholder="Empresa / proyecto" required>
     <input class="input" type="email" name="email" placeholder="Tu correo electrónico" required>
@@ -319,6 +242,27 @@ const io=new IntersectionObserver((obs)=>{
   obs.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* webhook form */
+async function sendFormData(form) {
+  const data = Object.fromEntries(new FormData(form).entries());
+  try {
+    const res = await fetch('https://n8n-n8n.bvil2a.easypanel.host/webhook/be7c4fcd-e1db-4d73-a634-0bc1df7028bd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      alert('✅ Enviado correctamente. Te contactaremos en 24h.');
+      form.reset();
+    } else {
+      alert('⚠️ Error al enviar el formulario.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('❌ No se pudo conectar con el servidor.');
+  }
+}
 </script>
 </body>
 </html>
