@@ -143,6 +143,99 @@
 </style>
 
 </html>
+<section class="services">
+  <h2>Nuestros Servicios</h2>
+  <p class="subtitle">Soluciones diseñadas para escalar, automatizar y hacer más eficiente tu negocio.</p>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="icon">🤖</div>
+      <h3>Automatización de Procesos</h3>
+      <p>Transformamos tareas manuales en flujos automáticos inteligentes que ahorran tiempo y eliminan errores.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">💬</div>
+      <h3>Chatbots Inteligentes</h3>
+      <p>Diseñamos agentes virtuales con IA que atienden, informan y convierten clientes las 24 horas del día.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">📊</div>
+      <h3>Integraciones Personalizadas</h3>
+      <p>Conectamos tus sistemas (CRM, redes, planillas, etc.) para centralizar datos y optimizar tus operaciones.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.services {
+  background: linear-gradient(180deg, #000814, #001f3f);
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,191,255,0.05) 0%, transparent 70%);
+  animation: lightMove 10s linear infinite;
+}
+
+@keyframes lightMove {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.services .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 60px;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  width: 300px;
+  padding: 40px 25px;
+  transition: 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(0,191,255,0.4);
+  box-shadow: 0 0 25px rgba(0,191,255,0.25);
+}
+
+.icon {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #00bfff;
+}
+</style>
+
 
 
 
